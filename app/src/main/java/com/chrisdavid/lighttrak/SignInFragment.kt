@@ -1,20 +1,15 @@
 package com.chrisdavid.lighttrak
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.chrisdavid.lighttrak.databinding.FragmentFirstBinding
+import androidx.fragment.app.Fragment
+import com.chrisdavid.lighttrak.databinding.FragmentSignInBinding
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
-class FirstFragment : Fragment() {
+class SignInFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentSignInBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,10 +18,9 @@ class FirstFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        Log.d("TAG", "onCreateView: when the view is inflated")
+        _binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -34,9 +28,7 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
+
     }
 
     override fun onDestroyView() {

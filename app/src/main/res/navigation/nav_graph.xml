@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/SecondFragment">
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.chrisdavid.lighttrak.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:name="com.chrisdavid.lighttrak.CreateAccountFragment"
+        android:label="Create Account"
+        tools:layout="@layout/fragment_create_account">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
@@ -17,9 +17,9 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.chrisdavid.lighttrak.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:name="com.chrisdavid.lighttrak.SignInFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_sign_in">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
