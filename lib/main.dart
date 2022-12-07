@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main()async {
+void main() async {
   //Initialising firebase for each platform
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -14,7 +14,7 @@ void main()async {
   // runApp is the inbuilt method that calls the root app of our project.
   //Provider scope is some magic from Riverpod (state management package) that permits
   // that the state of our app can be accessed by other widgets down the tree.
-  runApp(const ProviderScope(child:  TrainApp()));
+  runApp(const ProviderScope(child: TrainApp()));
 }
 
 class TrainApp extends ConsumerWidget {
@@ -22,7 +22,7 @@ class TrainApp extends ConsumerWidget {
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
     return MaterialApp.router(
       routeInformationParser: router.routeInformationParser,
@@ -31,35 +31,30 @@ class TrainApp extends ConsumerWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
+          // This is the theme of your application.
 
-        primarySwatch: Colors.blueGrey,
-        textTheme: GoogleFonts.varelaRoundTextTheme(
-          Theme.of(context).textTheme
-        ),
-        inputDecorationTheme: InputDecorationTheme(
-          isDense: true,
-          //Just defining how I want the borders of text input fields to look like across all of the app.
-          border: OutlineInputBorder(
-            borderSide: const BorderSide(width: 2.0, color:Color(0xff03314B) ),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 2.0, color:Color(0xff03314B) ),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          disabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 2.0, color:Color(0xff03314B) ),
-            borderRadius: BorderRadius.circular(10),
+          primarySwatch: Colors.blueGrey,
+          textTheme:
+              GoogleFonts.varelaRoundTextTheme(Theme.of(context).textTheme),
+          inputDecorationTheme: InputDecorationTheme(
+            isDense: true,
+            fillColor: Colors.grey[200],
+            filled: true,
+            //Just defining how I want the borders of text input fields to look like across all of the app.
 
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 2.0, color:Color(0xff03314B) ),
-            borderRadius: BorderRadius.circular(10),
-          ),
-        )
-      ),
-
+            enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                borderRadius: BorderRadius.circular(12)),
+            disabledBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(width: 2.0, color: Color(0xff03314B)),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.green),
+              borderRadius: BorderRadius.circular(12),
+            ),
+          )),
     );
   }
 }
