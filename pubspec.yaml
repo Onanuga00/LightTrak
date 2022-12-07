@@ -41,6 +41,10 @@ dependencies:
   firebase_auth: ^4.1.1
   cloud_firestore: ^4.0.4
   google_fonts: ^3.0.1
+  barcode: ^2.2.3
+  scan: ^1.6.0
+  # flutter_barcode_scanner: ^2.0.0
+  barcode_widget: ^2.0.3
 
 
 dev_dependencies:
