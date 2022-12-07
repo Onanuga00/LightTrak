@@ -8,45 +8,20 @@ import 'package:go_router/go_router.dart';
 import 'package:train_app/widgets/train_card.dart';
 import 'package:train_app/models/itinerary.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class AdminChooseTrip extends StatelessWidget {
+  const AdminChooseTrip({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         // leadingWidth: ,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text(
-              "DzeTrain",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              "Book your next train",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w200,
-                  fontSize: 13),
-            ),
-          ],
+        title: const Text(
+          "User Ticket Verification",
+          style: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.w600, fontSize: 20),
         ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 8.0),
-            child: UserCircleAvatar(
-              radiusOut: 19,
-              radiusIn: 18,
-            ),
-          )
-        ],
+
         elevation: 0.0,
         backgroundColor: const Color(0xff03314b),
       ),
@@ -255,14 +230,14 @@ class SearchTrainFormState extends ConsumerState<SearchTrainForm> {
                         color: Color(0xff1cbf8e)),
                     child: const Center(
                         child: Text(
-                      'Search Train',
+                      'Choose Trip',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.bold),
                     ))),
                 onPressed: () {
-                  context.push('/search');
+                  context.push('/tripresults');
                 },
               ),
             ),
@@ -351,34 +326,8 @@ class MyTextFormField extends StatelessWidget {
   }
 }
 
-class UserCircleAvatar extends ConsumerWidget {
-  const UserCircleAvatar({
-    this.radiusIn,
-    this.radiusOut,
-    Key? key,
-  }) : super(key: key);
-  final double? radiusIn;
-  final double? radiusOut;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    const String defaultUrl =
-        "https://cdn.pixabay.com/photo/2017/08/16/11/38/tree-2647471__340.png";
-    final String? url = ref.watch(authStateProvider).value?.photoURL;
-    return CircleAvatar(
-      backgroundColor: Colors.white.withOpacity(0.7),
-      radius: radiusOut,
-      child: CircleAvatar(
-        backgroundImage:
-            NetworkImage(url != null ? url.toString() : defaultUrl),
-        radius: radiusIn,
-      ),
-    );
-  }
-}
-
-class SearchTripPage extends ConsumerWidget {
-  const SearchTripPage({Key? key}) : super(key: key);
+class SearchTripPageResults extends ConsumerWidget {
+  const SearchTripPageResults({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -394,7 +343,7 @@ class SearchTripPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Search Trip",
+        title: const Text("Choose Trip for Verification",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.black,
@@ -467,7 +416,7 @@ class SearchTripPage extends ConsumerWidget {
                                       (state) => trip[index].id.toString(),
                                     );
 
-                                context.push('/options');
+                                context.push('/verifyticket');
                               },
                               child: Column(
                                 children: [

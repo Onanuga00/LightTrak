@@ -51,3 +51,43 @@ class TrainUser {
     };
   }
 }
+
+class Passenger {
+  final String? firstName;
+  final String? lastName;
+  final bool? isChild;
+  final bool? isAdult;
+  final int? socialNumber;
+
+  Passenger({
+    this.firstName,
+    this.lastName,
+    this.isChild,
+    this.isAdult,
+    this.socialNumber,
+  });
+
+  factory Passenger.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    final data = snapshot.data();
+    return Passenger(
+      lastName: data?['lastName'],
+      socialNumber: data?['socialNumber'],
+      firstName: data?['firstName'],
+      isAdult: data?['isAdult'],
+      isChild: data?['isChild'],
+    );
+  }
+
+  Map<String, dynamic> toFireStore() {
+    return {
+      if (firstName != null) "firstName": firstName,
+      if (lastName != null) "lastName": lastName,
+      if (socialNumber != null) "imageUrl": socialNumber,
+      "isAdult": true,
+      "isChild": false,
+    };
+  }
+}
