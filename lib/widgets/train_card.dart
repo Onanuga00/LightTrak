@@ -88,50 +88,7 @@ class TrainCard extends StatelessWidget {
             child: Stack(
               alignment: AlignmentDirectional.center,
               children: [
-                Row(
-                  children: [
-                    Text(
-                      fromCode,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 18),
-                    ),
-                    Expanded(child: Container()),
-                    const CircleDot(),
-                    Expanded(
-                        flex: 2,
-                        child: SizedBox(
-                          height: 15,
-                          child: LayoutBuilder(builder: (BuildContext context,
-                              BoxConstraints constraints) {
-                            return Flex(
-                              direction: Axis.horizontal,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.max,
-                              children: List.generate(
-                                  (constraints.constrainWidth() / 7).floor(),
-                                  (index) => Text(
-                                        '-',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 15,
-                                            color: Colors.blueGrey.shade300),
-                                      )),
-                            );
-                          }),
-                        )),
-                    const CircleDot(),
-                    Expanded(child: Container()),
-                    Text(
-                      toCode,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 18),
-                    )
-                  ],
-                ),
+                SourceTODestination(fromCode: fromCode, toCode: toCode),
                 Icon(
                   Icons.directions_train_rounded,
                   color: Colors.blueGrey.shade300,
@@ -204,6 +161,61 @@ class TrainCard extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class SourceTODestination extends StatelessWidget {
+  const SourceTODestination({
+    Key? key,
+    required this.fromCode,
+    required this.toCode,
+  }) : super(key: key);
+
+  final String fromCode;
+  final String toCode;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          fromCode,
+          style: const TextStyle(
+              fontWeight: FontWeight.bold, color: Colors.black, fontSize: 18),
+        ),
+        Expanded(child: Container()),
+        const CircleDot(),
+        Expanded(
+            flex: 2,
+            child: SizedBox(
+              height: 15,
+              child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                return Flex(
+                  direction: Axis.horizontal,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: List.generate(
+                      (constraints.constrainWidth() / 7).floor(),
+                      (index) => Text(
+                            '-',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 15,
+                                color: Colors.blueGrey.shade300),
+                          )),
+                );
+              }),
+            )),
+        const CircleDot(),
+        Expanded(child: Container()),
+        Text(
+          toCode,
+          style: const TextStyle(
+              fontWeight: FontWeight.bold, color: Colors.black, fontSize: 18),
+        )
+      ],
     );
   }
 }
