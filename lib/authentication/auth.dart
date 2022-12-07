@@ -10,6 +10,10 @@ class Authentication {
   User? get currentUser => _auth.currentUser;
   String get currentUserID => _auth.currentUser!.uid;
 
+  Future<void> resetPassword(email) async {
+    await _auth.sendPasswordResetEmail(email: email);
+  }
+
   Future<void> createUserWithEmailAndPassword(
       String email, String password, BuildContext ctx) async {
     try {
